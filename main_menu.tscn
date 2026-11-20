@@ -25,22 +25,27 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1840828626]
 layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer" unique_id=1581622557]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1757876870]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1102209804]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer" unique_id=1757876870]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=674687584]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+text = "This is a helper for visualizing how 3d forms convert to normal map colors. For a given model, pick a point. The app will draw its normal. Guess what RGB that converts to.
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=674687584]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-text = "This is a helper for visualizing how 3d forms convert to normal map colors. For a given model, pick a face. It will draw its normal. Guess what rgb that converts to.
-
-The \"correct\" color will always be with respect to the original camera, but the normal map overlay will be with respect to the current camera."
+When measuring how good your guess was, the \"correct\" color will always be with respect to the original camera. However, the normal map overlay will be with respect to the current camera."
 autowrap_mode = 2
 
-[node name="ModelButtons" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=996296106]
+[node name="ModelButtons" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=996296106]
 unique_name_in_owner = true
 layout_mode = 2
 

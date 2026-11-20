@@ -67,7 +67,7 @@ func _ready() -> void:
 		normal_map_toggle.disabled = true
 		return
 
-	seed(5)
+	# seed(5)
 
 	reset_camera_button.pressed.connect(_on_reset_camera_button_pressed)
 	color_picker.color_changed.connect(_on_color_changed)
@@ -226,7 +226,7 @@ func is_triangle_visible(triangle: TriangleData) -> bool:
 
 	return hit_position.distance_to(center) < EPS
 
-func draw_normal(starting_point: Vector3, normal: Vector3, length: float = 0.5):
+func draw_normal(starting_point: Vector3, normal: Vector3, length: float = 0.25):
 	clear_current_normal_visual()
 	toggle_hint_info(false)
 		

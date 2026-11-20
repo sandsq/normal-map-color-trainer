@@ -57,10 +57,11 @@ layout_mode = 2
 [node name="RandomButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1632743664]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Pick random normal"
+text = "Pick random normal =>"
 
 [node name="GuessButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1922851450]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.24437058, 0.81218785, 0.56154025, 1)
 text = "Guess!"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=435807057]
