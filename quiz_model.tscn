@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bmpid3igwmt86"]
+
+[ext_resource type="Script" uid="uid://c3q7kd8rfwak4" path="res://quiz_model.gd" id="1_5kt6w"]
+
+[node name="QuizModel" type="Node3D" unique_id=1877847572]
+script = ExtResource("1_5kt6w")

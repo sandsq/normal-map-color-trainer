@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cg67fs4rhp2oy"]
+
+[ext_resource type="PackedScene" uid="uid://bmpid3igwmt86" path="res://quiz_model.tscn" id="1_0efhu"]
+[ext_resource type="PackedScene" uid="uid://cmmi0bx8mmiqy" path="res://KayKit_Adventurers_2.0_FREE/Characters/gltf/Rogue.glb" id="2_7nvfa"]
+
+[node name="QuizModel" unique_id=1877847572 instance=ExtResource("1_0efhu")]
+
+[node name="Rogue" parent="." index="0" unique_id=223217749 instance=ExtResource("2_7nvfa")]
+
+[editable path="Rogue"]

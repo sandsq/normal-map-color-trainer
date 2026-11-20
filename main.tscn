@@ -1,20 +1,21 @@
 [gd_scene format=3 uid="uid://1p8sxl65sixc"]
 
 [ext_resource type="Script" uid="uid://b8qs5biwxer5s" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cj8k0iv4joj5p" path="res://tree.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dxfhgqb7i7p0m" path="res://tree.tscn" id="2_0xm2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u155x"]
 albedo_color = Color(0.40510395, 0.8015449, 0.880409, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1197422811]
 script = ExtResource("1_0xm2m")
+default_model = ExtResource("2_0xm2m")
 
-[node name="Tree" parent="." unique_id=478201538 instance=ExtResource("2_0xm2m")]
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1614919696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3549379, -2.585586, -1.2372948)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=475160175]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20848012, 1.3991731, -11.220209)
-size = Vector3(46.383537, 22.623734, 1)
+[node name="Background" type="CSGBox3D" parent="." unique_id=475160175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20848012, -7.164376, -11.220209)
+size = Vector3(46.383537, 39.75083, 1)
 material = SubResource("StandardMaterial3D_u155x")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=555946701]
@@ -26,9 +27,116 @@ light_energy = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1486619224]
 
-[node name="Button" type="Button" parent="CanvasLayer" unique_id=1048710736]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Overlay" type="Control" parent="CanvasLayer" unique_id=2045846019]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1922945521]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 303.0
+offset_bottom = 682.0
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1228430493]
+layout_mode = 2
+text = "Back to selector"
+
+[node name="ResetCameraButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1048710736]
+layout_mode = 2
 text = "Reset camera"
 
-[editable path="Tree"]
+[node name="RandomButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1632743664]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pick random normal"
+
+[node name="ColorPicker" type="ColorPicker" parent="CanvasLayer/VBoxContainer" unique_id=569709522]
+layout_mode = 2
+
+[node name="GuessButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1922851450]
+layout_mode = 2
+text = "Guess!"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=435807057]
+offset_left = 6.0
+offset_top = 759.0
+offset_right = 259.0
+offset_bottom = 870.0
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=299799353]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=536576743]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Guess:"
+
+[node name="GuessColor" type="ColorRect" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=1218750739]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="GuessVector" type="Label" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=909771362]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "(1, 1, 1)"
+horizontal_alignment = 2
+
+[node name="AnswerContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=2123752831]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer2/AnswerContainer" unique_id=1338415962]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "True:"
+
+[node name="TrueColor" type="ColorRect" parent="CanvasLayer/VBoxContainer2/AnswerContainer" unique_id=617435356]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TrueVector" type="Label" parent="CanvasLayer/VBoxContainer2/AnswerContainer" unique_id=1733668582]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "(1, 1, 1)"
+horizontal_alignment = 2
+
+[node name="AccuracyLabel" type="Label" parent="CanvasLayer/VBoxContainer2/AnswerContainer" unique_id=2060755338]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Accuracy:"
+
+[node name="NormalMapToggle" type="CheckBox" parent="CanvasLayer" unique_id=1074331352]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 40)
+custom_maximum_size = Vector2(200, 40)
+offset_left = 1399.0
+offset_top = 859.0
+offset_right = 1599.0
+offset_bottom = 899.0
+text = "Overlay normal map"
+
+[node name="PixelSizeInput" type="LineEdit" parent="CanvasLayer" unique_id=1084335043]
+unique_name_in_owner = true
+offset_left = 1403.0
+offset_top = 835.0
+offset_right = 1572.0
+offset_bottom = 866.0
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

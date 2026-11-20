@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://v6d70wo557jg"]
+
+[ext_resource type="Script" uid="uid://eotcdpubb0h3" path="res://main_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" uid="uid://dxfhgqb7i7p0m" path="res://tree.tscn" id="2_tree"]
+[ext_resource type="PackedScene" uid="uid://bj5j5mcodhyvc" path="res://tree4.tscn" id="3_fu7sn"]
+[ext_resource type="PackedScene" uid="uid://cg67fs4rhp2oy" path="res://rogue.tscn" id="4_jix8l"]
+
+[node name="MainMenu" type="Control" unique_id=760271719]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+models = Array[PackedScene]([ExtResource("2_tree"), ExtResource("3_fu7sn"), ExtResource("4_jix8l")])
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=612796046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1840828626]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer" unique_id=1581622557]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer" unique_id=1757876870]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=674687584]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "This is a helper for visualizing how 3d forms convert to normal map colors. For a given model, pick a face. It will draw its normal. Guess what rgb that converts to."
+autowrap_mode = 2
+
+[node name="ModelButtons" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=996296106]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1128060953]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 761.0
+offset_right = 1589.0
+offset_bottom = 892.0
+bbcode_enabled = true
+text = "Models: 
+- [url=https://kaylousberg.itch.io/kaykit-forest]KayKit - Forest Nature Pack[/url]
+- [url=https://kaylousberg.itch.io/kaykit-adventurers]KayKit - Character Pack : Adventurers[/url]"

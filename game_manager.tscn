@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c13rnchflynov"]
+
+[ext_resource type="Script" uid="uid://b8pfnhca0ay26" path="res://game_manager.gd" id="1_manager"]
+[ext_resource type="PackedScene" uid="uid://v6d70wo557jg" path="res://main_menu.tscn" id="2_menu"]
+[ext_resource type="PackedScene" uid="uid://1p8sxl65sixc" path="res://main.tscn" id="3_trainer"]
+
+[node name="GameManager" type="Node" unique_id=2038611701]
+script = ExtResource("1_manager")
+trainer_scene = ExtResource("3_trainer")
+
+[node name="MainMenu" parent="." unique_id=1188049884 instance=ExtResource("2_menu")]
