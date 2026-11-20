@@ -56,6 +56,7 @@ var overlay_dirty := false
 @onready var pixel_size_input: LineEdit = %PixelSizeInput
 @onready var overlay: Control = $CanvasLayer/Overlay
 @onready var random_button: Button = %RandomButton
+@onready var rgb_hint_toggle: CheckBox = %ShowHints
 
 func _ready() -> void:
 	if not load_selected_model():
@@ -73,8 +74,11 @@ func _ready() -> void:
 	guess_button.pressed.connect(_on_guess_made)
 	random_button.pressed.connect(_on_random_button_pressed)
 
-	answer_container.hide()
-
+	toggle_hint_info(false)
+	rgb_hint_toggle.toggled.connect(_on_rgb_hint_toggled)
+	rgb_hint_toggle.button_pressed = true
+	
+	
 	# color_picker.picker_shape = ColorPicker.SHAPE_VHS_CIRCLE
 	color_picker.edit_alpha = false
 	color_picker.color = current_color
@@ -170,7 +174,18 @@ func clear_current_normal_visual():
 		current_normal_line.queue_free()
 	if current_square != null:
 		current_square.queue_free()
-	
+
+func toggle_hint_info(toggle_on: bool):
+	if !toggle_on:
+		answer_container.hide()
+		accuracy_label.hide()
+		guess_vector_label.hide()
+	else:
+		answer_container.show()
+		accuracy_label.show()
+		guess_vector_label.show()
+
+		
 func collect_triangle_data():
 	triangles.clear()
 
@@ -213,8 +228,7 @@ func is_triangle_visible(triangle: TriangleData) -> bool:
 
 func draw_normal(starting_point: Vector3, normal: Vector3, length: float = 0.5):
 	clear_current_normal_visual()
-	answer_container.hide()
-	accuracy_label.text = "Accuracy:"
+	toggle_hint_info(false)
 		
 	var direction = normal.normalized()
 	current_normal = direction
@@ -257,7 +271,7 @@ func pick_and_draw_random_visible_triangle():
 	draw_normal(point, selected.normal)
 
 func rotate_camera(mouse_delta: Vector2) -> void:
-	clear_current_normal_visual()
+	# clear_current_normal_visual()
 	var distance := camera.global_position.distance_to(camera_rotation_center)
 	var angles := camera.global_rotation
 
@@ -275,7 +289,7 @@ func rotate_camera(mouse_delta: Vector2) -> void:
 	)
 
 func pan_camera(mouse_delta: Vector2) -> void:
-	clear_current_normal_visual()
+	# clear_current_normal_visual()
 	var distance := camera.global_position.distance_to(camera_rotation_center)
 	var viewport_height := camera.get_viewport().get_visible_rect().size.y
 
@@ -427,11 +441,17 @@ func _on_color_changed(color: Color):
 	guess_color_rect.color = current_color
 
 func _on_guess_made():
-	answer_container.show()
+	toggle_hint_info(true)
 	true_vector_label.text = "(%.2f, %.2f, %.2f)" % [current_normal.x, current_normal.y, current_normal.z]
 	
+	
+	var original_rotation = original_camera_transform.basis.orthonormalized()
+	var answer_normal = (original_rotation.transposed() * current_normal).normalized()
+
+	var current_normal_to_rgb = (answer_normal + Vector3.ONE) * 0.5
+	
 	var current_rgb_vector = Vector3(current_color.r, current_color.g, current_color.b)
-	var current_normal_to_rgb = (current_normal + Vector3(1, 1, 1)) / 2.0
+	# var current_normal_to_rgb = (current_normal + Vector3(1, 1, 1)) / 2.0
 	true_color_rect.color = Color(current_normal_to_rgb.x, current_normal_to_rgb.y, current_normal_to_rgb.z)
 	var accuracy = 100.0 * (1 - (current_rgb_vector.distance_to(current_normal_to_rgb) / sqrt(3.0)))
 	accuracy_label.text = "%.2f" % accuracy
@@ -457,3 +477,9 @@ func _on_normal_map_toggled(toggled_on: bool):
 
 func _on_random_button_pressed():
 	pick_and_draw_random_visible_triangle()
+
+func _on_rgb_hint_toggled(toggled_on: bool):
+	if toggled_on:
+		%HintHider.show()
+	else:
+		%HintHider.hide()

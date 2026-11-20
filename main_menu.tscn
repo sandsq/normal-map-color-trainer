@@ -35,7 +35,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=674687584]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "This is a helper for visualizing how 3d forms convert to normal map colors. For a given model, pick a face. It will draw its normal. Guess what rgb that converts to."
+text = "This is a helper for visualizing how 3d forms convert to normal map colors. For a given model, pick a face. It will draw its normal. Guess what rgb that converts to.
+
+The \"correct\" color will always be with respect to the original camera, but the normal map overlay will be with respect to the current camera."
 autowrap_mode = 2
 
 [node name="ModelButtons" type="VBoxContainer" parent="PanelContainer/MarginContainer/CenterContainer/HBoxContainer" unique_id=996296106]

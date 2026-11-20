@@ -51,13 +51,13 @@ text = "Back to selector"
 layout_mode = 2
 text = "Reset camera"
 
+[node name="ColorPicker" type="ColorPicker" parent="CanvasLayer/VBoxContainer" unique_id=569709522]
+layout_mode = 2
+
 [node name="RandomButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1632743664]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Pick random normal"
-
-[node name="ColorPicker" type="ColorPicker" parent="CanvasLayer/VBoxContainer" unique_id=569709522]
-layout_mode = 2
 
 [node name="GuessButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1922851450]
 layout_mode = 2
@@ -117,7 +117,7 @@ size_flags_horizontal = 8
 text = "(1, 1, 1)"
 horizontal_alignment = 2
 
-[node name="AccuracyLabel" type="Label" parent="CanvasLayer/VBoxContainer2/AnswerContainer" unique_id=2060755338]
+[node name="AccuracyLabel" type="Label" parent="CanvasLayer/VBoxContainer2" unique_id=2060755338]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Accuracy:"
@@ -138,5 +138,21 @@ offset_left = 1403.0
 offset_top = 835.0
 offset_right = 1572.0
 offset_bottom = 866.0
+
+[node name="ShowHints" type="CheckBox" parent="CanvasLayer" unique_id=512868121]
+unique_name_in_owner = true
+offset_left = 310.0
+offset_top = 398.0
+offset_right = 416.0
+offset_bottom = 429.0
+
+[node name="HintHider" type="ColorRect" parent="CanvasLayer" unique_id=144403957]
+unique_name_in_owner = true
+visible = false
+offset_left = 1.0
+offset_top = 400.0
+offset_right = 305.0
+offset_bottom = 607.0
+color = Color(0.67450005, 0.84898335, 0.95, 1)
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
