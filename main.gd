@@ -462,7 +462,7 @@ func _on_pixel_size_value_changed(new_text: String):
 	else:
 		current_pixel_size = -1
 
-	request_overlay_rebuild()
+	# request_overlay_rebuild()
 
 func request_overlay_rebuild() -> void:
 	if normal_map_toggle.button_pressed:

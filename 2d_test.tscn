@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://fsx8catthyvk"]
+
+[ext_resource type="Texture2D" uid="uid://b5omuiks0nvr1" path="res://char_test.png" id="1_allgy"]
+[ext_resource type="Texture2D" uid="uid://d4c1wpda2x2qh" path="res://char_n.png" id="2_j4iig"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_u155x"]
+diffuse_texture = ExtResource("1_allgy")
+normal_texture = ExtResource("2_j4iig")
+
+[node name="Node2D" type="Node2D" unique_id=322156135]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1367039880]
+texture = SubResource("CanvasTexture_u155x")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2033104065]
+position = Vector2(309, -667)
+texture = ExtResource("1_allgy")
+texture_scale = 9.9
+height = 20.0
